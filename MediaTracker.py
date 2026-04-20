@@ -41,8 +41,7 @@ class MediaTracker():
             title (str): title of media.
         """
         self.cursor.execute("DELETE FROM media WHERE title = ?", (title,))
-        if input("\nAre you sure?[y/n]: ") == 'y':
-            self.conn.commit()
+        self.conn.commit()
         
     def updateMedia(self, collumn, toUpdate, newVal) -> None:
         """Updates the data of a certain database entry.
