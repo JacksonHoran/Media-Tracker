@@ -68,9 +68,17 @@ class MediaTracker():
         self.conn.commit()
             
 
-    def displayAll(self) -> None:
+    def displayAll(self, sortBy=1) -> None:
         """Queries and prints the entire databse of media."""
-        self.cursor.execute("SELECT id, title, type, status, rating FROM media")
+        validCollumns = {
+            1:'id',
+            2:'title',
+            3:'type', 
+            4:'status',
+            5:"rating"
+        }
+        collumn = validCollumns.get(sortBy, 'id')
+        self.cursor.execute(f"SELECT id, title, type, status, rating FROM media ORDER BY {collumn} ASC")
         rows = self.cursor.fetchall()
 
         print(f"{'ID':<4} | {'Title':<20} | {'Type':<10} | {'Status':<15} | {'Rating':<4}")
@@ -80,9 +88,6 @@ class MediaTracker():
             id, title, type, status, rating = row
             print(f"{id:<4} | {title:<20} | {type:<10} | {status:<15} | {rating:<4}")
         print()
-
-    def displayFiltered(self) -> None:
-        pass
 
     def close(self) -> None:
         """Closes the SQL connection."""
@@ -152,7 +157,16 @@ def main():
                 title, type, status, rating
                 mt.addMedia(title, type, status, rating)
             case 2:
-                mt.displayAll()
+                print('\n----- Display Media  -----')
+                print("\nHow would you like to sort the data?")
+                print("1: Entry date")
+                print("2: Title")
+                print("3: Media type")
+                print("4: Status")
+                print("5: Rating")
+                choice = int(input("Enter choice (1-5): "))
+                mt.displayAll(choice)
+
             case 3:
                 mt.updateMedia(*updateEntriePromt())
             case 4:
