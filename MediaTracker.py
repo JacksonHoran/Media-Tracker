@@ -8,8 +8,7 @@ class MediaTracker():
         self._createTable()
 
     def _createTable(self) -> None:
-        """Creates db file if it does not exist in the working directory.
-        """
+        """Creates db file if it does not exist in the working directory."""
         self.cursor.execute('''
             CREATE TABLE IF NOT EXISTS media (
                 id INTEGER PRIMARY KEY,
@@ -95,7 +94,7 @@ class MediaTracker():
 
 ############# UI Helper Methods ############# 
 
-def updateEntriePromt():
+def updateEntryPromt():
     """Prompts user for input depending on what data they would like to update.
 
     Returns:
@@ -139,7 +138,6 @@ def main():
         print('----- Media Tracker -----')
         print('1. Add media')
         print('2. Display all media')
-        # print('3. Display filtered media')
         print('3. Update entries')
         print('4. Delete entry')
         print('5. Exit')
@@ -165,9 +163,8 @@ def main():
                 print("5: Rating")
                 choice = int(input("Enter choice (1-5): "))
                 mt.displayAll(choice)
-
             case 3:
-                mt.updateMedia(*updateEntriePromt())
+                mt.updateMedia(*updateEntryPromt())
             case 4:
                 print('\n----- Delete Entry  -----')
                 mt.deleteMedia(input('Enter title of media to delete: '))

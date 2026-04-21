@@ -1,0 +1,22 @@
+a. What was the hardest part?
+    One area that I found to be challenging was determining the separation between class logic and main logic. I've only ever worked with SQLite in a machine learning class in which we solely work in jupyter notebooks. We also don't use OOP, therefore I had to do a bit of research to figure out how to configure the two parts of the app. When I was implementing the delete feature, I had sort of on-the-spot thought that it would be good to add a confirmation prompt. To keep the code simple, I originally added the prompt in the class method. When doing a final check over of the app I realized that I should avoid putting any UI logic into the class and delete that part of the feature.
+
+
+b. What would you improve with another hour?
+    If I was given a bit more time I would first make the app more robust. I would like to add defensive programming practices to protect from poor user input. I could use Try/Except blocks and prompt the user again if the program is given bad input.
+
+
+c. Did you use AI tools? If so, how?
+    Yes, I used Gemini alongside a regular search engine. In some cases like formatting the print statements in lines 83-89 using AI was a major timesaver. I also used it to find the right syntax for the match statement that I used in the UI. I've used switch statements in other languages and I wasn't quite sure how to use it in python. Additionally, while I have used git and github before I had never used pull requests so I used AI to walk me through how and when to use other branches and merge them. I don't use any IDE integrated tools like Codex or Claude, I only use LLMs as a search engine.
+
+
+d. Tell us one specific design decision you made
+    As I mentioned above, I chose to keep the UI logic completely separate from the class logic. In doing so, I allowed myself the ability to use that class in other applications. For example, I could use the same class and make a second version of the app that has a GUI.
+
+
+e. Tell us one specific tradeoff you accepted
+    I chose SQLite over JSON for storage. With JSON, any changes to the data require a full rewrite, O(n). With SQL, I accepted the more complicated setup and larger initial memory requirement for faster access to the data. While the database is not fully indexed as of now, the ability to do so in the future was much more important to me than the immediate benefits of JSON. After proper indexing of the database, lookup time can be reduced to O(log n). 
+
+
+f. Tell us a known limitation or bug
+    The biggest limitation is handling the user input. There are near zero protections against bad input. If the user types 'four' instead of 4 the program crashes. Additionally, in the prompts that use match statements, if the user types in a value that isn’t included in the statement, they are redirected to the home screen/prompt. I could fix this by adding try/except blocks and validating that input is valid and re-prompting the user is necessary.
