@@ -22,7 +22,7 @@ A Python application for cataloging and tracking your personal media library (mo
 * Modify
   * Modify a specific category in a specific entry
 * Display
- * Sory by: Date of Entry, Title, Type, Status, Rating
+  * Sory by: Date of Entry, Title, Type, Status, Rating
 ## Future Additions Could Include
 * Defensive programming practices
 * Filtered display
